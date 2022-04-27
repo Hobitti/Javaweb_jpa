@@ -1,23 +1,31 @@
 package data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Ehdokas {
-	private int id;
-	private String nimi;
-	private int kunta;
-	private String slogan;
-	private int puolue;
-	private String kuvaus;
-	private String kuntaS;
-	private String puolueS;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int EhdokasID;
+	private String Nimi;
+	private int KuntaID;
+	private String Slogan;
+	private int PuolueID;
+	private String Kuvaus;
+//	private String kuntaS;
+//	private String puolueS;
 
 	public Ehdokas(int id, String nimi, int kunta, String slogan, int puolue, String kuvaus) {
 		super();
-		this.id = id;
-		this.nimi = nimi;
-		this.kunta = kunta;
-		this.slogan = slogan;
-		this.puolue = puolue;
-		this.kuvaus = kuvaus;
+		this.EhdokasID = id;
+		this.Nimi = nimi;
+		this.KuntaID = kunta;
+		this.Slogan = slogan;
+		this.PuolueID = puolue;
+		this.Kuvaus = kuvaus;
 	}
 	
 	public Ehdokas() {
@@ -25,67 +33,67 @@ public class Ehdokas {
 	}
 	
 	public String getKuvaus() {
-		return kuvaus;
+		return Kuvaus;
 	}
 	
 	public void setKuvaus(String kuvaus) {
-		this.kuvaus = kuvaus;
+		this.Kuvaus = kuvaus;
 	}
 	
 	public int getId() {
-		return id;
+		return EhdokasID;
 	}
 	
 	public void setId(int id) {
-		this.id = id;
+		this.EhdokasID = id;
 	}
 	
 	public String getNimi() {
-		return nimi;
+		return Nimi;
 	}
 	
 	public void setNimi(String nimi) {
-		this.nimi = nimi;
+		this.Nimi = nimi;
 	}
 	
 	public int getKunta() {
-		return kunta;
+		return KuntaID;
 	}
 	
 	public void setKunta(int kunta) {
-		this.kunta = kunta;
+		this.KuntaID = kunta;
 	}
 	
-	public String getKuntaS() {
-		return kuntaS;
-	}
-	
-	public void setKuntaS(String kuntaS) {
-		this.kuntaS = kuntaS;
-	}
+//	public String getKuntaS() {
+//		return kuntaS;
+//	}
+//	
+//	public void setKuntaS(String kuntaS) {
+//		this.kuntaS = kuntaS;
+//	}
 	
 	public String getSlogan() {
-		return slogan;
+		return Slogan;
 	}
 	
 	public void setSlogan(String slogan) {
-		this.slogan = slogan;
+		this.Slogan = slogan;
 	}
 	
 	public int getPuolue() {
-		return puolue;
+		return PuolueID;
 	}
 	
 	public void setPuolue(int puolue) {
-		this.puolue = puolue;
+		this.PuolueID = puolue;
 	}
 	
-	public String getPuolueS() {
-		return puolueS;
-	}
-	
-	public void setPuolueS(String puolueS) {
-		this.puolueS = puolueS;
-	}
+//	public String getPuolueS() {
+//		return puolueS;
+//	}
+//	
+//	public void setPuolueS(String puolueS) {
+//		this.puolueS = puolueS;
+//	}
 
 }
