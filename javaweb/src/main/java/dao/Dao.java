@@ -17,7 +17,7 @@ import data.*;
 
 /**
  * @author akseli, nuutti, sami
- *  kommunikoi databasen ja ohjelman välillä
+ *  kommunikoi databasen ja ohjelman vï¿½lillï¿½
  *
  */
 
@@ -59,7 +59,7 @@ public class Dao {
 
 
 	/**
-	 * @return palauttaa kaikki ehdokkaat arrayssä
+	 * @return palauttaa kaikki ehdokkaat arrayssï¿½
 	 */
 	//Ehdokas tablen toiminnot alkavat tÃ¤stÃ¤
 	public ArrayList<Ehdokas> readAllEhdokas() {
@@ -99,10 +99,10 @@ public class Dao {
 					ehdokas.setId(RS.getInt("EhdokasID"));
 					ehdokas.setNimi(RS.getString("Nimi"));
 					ehdokas.setKunta(RS.getInt("KuntaID"));
-					ehdokas.setKuntaS(RS.getString("KunnanNimi"));
+//					ehdokas.setKuntaS(RS.getString("KunnanNimi"));
 					ehdokas.setSlogan(RS.getString("Slogan"));
 					ehdokas.setPuolue(RS.getInt("PuolueID"));
-					ehdokas.setPuolueS(RS.getString("PuolueenNimi"));
+//					ehdokas.setPuolueS(RS.getString("PuolueenNimi"));
 					ehdokas.setKuvaus(RS.getString("Kuvaus"));
 				}
 				return ehdokas;
@@ -135,7 +135,7 @@ public class Dao {
 		
 		/**
 		 * @param id kuka poistetaan
-		 * @return palauttaa kaikki jäljellä olevat ehdokkaat
+		 * @return palauttaa kaikki jï¿½ljellï¿½ olevat ehdokkaat
 		 */
 		/**
 		 * @param id
@@ -205,7 +205,7 @@ public class Dao {
 		
 		/**
 		 * @param k muokattava kysymys
-		 * @return palauttaa kaikki kysymykset muokkauksen jälkeen
+		 * @return palauttaa kaikki kysymykset muokkauksen jï¿½lkeen
 		 */
 		public ArrayList<Kysymys> updateEhdokas(Kysymys k) {
 			try {
@@ -225,7 +225,7 @@ public class Dao {
 		
 		/**
 		 * @param id poistettavan kysymyksen id
-		 * @return palauttaa jäljelle jääneet kysymykset
+		 * @return palauttaa jï¿½ljelle jï¿½ï¿½neet kysymykset
 		 */
 		public ArrayList<Kysymys> deleteKysymys(String id) {
 			try {
@@ -295,7 +295,7 @@ public class Dao {
 
 		/**
 		 * @param id poistettava ehdokas id
-		 * @return palautta jäljelle jääneet vastaukset
+		 * @return palautta jï¿½ljelle jï¿½ï¿½neet vastaukset
 		 */
 		public ArrayList<Vastaukset> deleteVastaus(String id) {
 			try {
@@ -377,8 +377,8 @@ public class Dao {
 		}
 		
 		/**
-		 * @param userAvg kayttäjän vastauksien avg
-		 * @return palauttaa 3 käyttäjän avg lähellä ollutta ehdokasta
+		 * @param userAvg kayttï¿½jï¿½n vastauksien avg
+		 * @return palauttaa 3 kï¿½yttï¿½jï¿½n avg lï¿½hellï¿½ ollutta ehdokasta
 		 */
 		public Map<Integer, Float> readBestEhdokkaat(float userAvg) {
 			Map<Integer, Float> bestEhdokkaat = new HashMap<Integer, Float>();
@@ -397,7 +397,7 @@ public class Dao {
 		}
 		
 		/**
-		 * @param vastaus lisättävä vastaus
+		 * @param vastaus lisï¿½ttï¿½vï¿½ vastaus
 		 * @return palauttaa vastauksen jos sql toimii
 		 */
 		public Vastaukset insertVastaus(Vastaukset vastaus) {
