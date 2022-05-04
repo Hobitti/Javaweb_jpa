@@ -13,10 +13,8 @@ function readEhdokkaat(){
 	  if (this.readyState == 4 && this.status == 200) {
 		  var ehdokkaatListJSON = this.responseText;
 		  var ehdokkaat = JSON.parse(ehdokkaatListJSON);
-		  //print fish by function printOneFish.
+
 		  printEhdokkaat(ehdokkaat);
-	  } else {
-		  document.getElementById("ehdokkaat").innerHTML = "lol";
 	  }
 	};
 	xmlhttp.open("GET", "/rest/ehdokasService/readEhdokkaat", true);
@@ -26,7 +24,7 @@ function readEhdokkaat(){
 function printEhdokkaat(list){
 	var s = "";
 	for (i in list) {
-		s = s + "<div><h1>" + list[i].nimi + "</h1></div>";
+		s = s + "<div><h1>" + list[i].nimi + "</h1></div><a href='/jsp/muokkaa_ehdokas.jsp?id=" + list[i].id + "'>Muokkaa</a>";
 	}
 	document.getElementById("ehdokkaat").innerHTML = s;
 }
@@ -39,8 +37,7 @@ $(document).ready(function() {
 </head>
 <body>
 	<div id="ehdokkaat">
-	
+		<p>Ladataan ehdokkaita</p>
 	</div>
-	<p>Kakkaa</p>
 </body>
 </html>
