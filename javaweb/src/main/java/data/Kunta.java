@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Kunta {
@@ -22,7 +21,6 @@ public class Kunta {
 	@Column(name = "Num")
 	private int num;
 	
-	@OneToMany(mappedBy = "kunta")
 	private List<Ehdokas> ehdokkaat;
 	
 	public Kunta(int id, String nimi, int num) {
