@@ -17,7 +17,7 @@ public class Ehdokas {
 	private String nimi;
 	
 	@Column(name = "KuntaID")
-	private int kunta;
+	private int kuntaId;
 	
 	@Column(name = "Slogan")
 	private String slogan;
@@ -30,11 +30,11 @@ public class Ehdokas {
 //	private String kuntaS;
 //	private String puolueS;
 
-	public Ehdokas(int id, String nimi, int kunta, String slogan, int puolue, String kuvaus) {
+	public Ehdokas(int id, String nimi, int kuntaId, String slogan, int puolue, String kuvaus) {
 		super();
 		this.id = id;
 		this.nimi = nimi;
-		this.kunta = kunta;
+		this.kuntaId = kuntaId;
 		this.slogan = slogan;
 		this.puolue = puolue;
 		this.kuvaus = kuvaus;
@@ -69,11 +69,11 @@ public class Ehdokas {
 	}
 	
 	public int getKunta() {
-		return kunta;
+		return kuntaId;
 	}
 	
 	public void setKunta(int kunta) {
-		this.kunta = kunta;
+		this.kuntaId = kunta;
 	}
 	
 //	public String getKuntaS() {
