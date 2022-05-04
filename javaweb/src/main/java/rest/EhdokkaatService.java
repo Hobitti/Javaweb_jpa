@@ -91,15 +91,17 @@ public class EhdokkaatService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Ehdokas muokkaaEhdokas(Ehdokas ehdokas) {
 		EntityManager em=emf.createEntityManager();
+		
 	    em.getTransaction().begin();
+	    
 	    Ehdokas e = em.find(Ehdokas.class, ehdokas.getId());
-	    System.out.println(e.getId());
+
 	    if(e != null) {
 	    	em.merge(ehdokas);
 	    }
-	    //em.createQuery("update Ehdokas a SET a.nimi = '" + name + "', a.kuvaus = '" + desc + "', a.slogan = '" + slogan + "', a.kuntaId = '" + kuntaId + "', a.puolue = '" + puolueId + "' WHERE a.id = '" + id + "'");
+	    
 	    em.getTransaction().commit();
-		return e;
+		return ehdokas;
 	}
 	
 	@GET
