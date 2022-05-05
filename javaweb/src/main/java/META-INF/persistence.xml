@@ -5,6 +5,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	
 <!-- The name of the persistence unit: here jpa247. This is used in the application code -->	
 	<persistence-unit name="jpavaalikone">
+	
 <!-- All the classes, which belong to the peristence unit and so can be persisted using JPA
 	Here there is just one: app.Fish. All the other should be added in the same way. -->	
 	<class>data.Ehdokas</class>
@@ -33,4 +34,5 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	</properties>
 	
 	</persistence-unit>
+	
 </persistence>
