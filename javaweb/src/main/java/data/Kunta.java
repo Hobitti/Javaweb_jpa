@@ -63,28 +63,3 @@ public class Kunta {
 	}
 
 }
-
-		return KuntaID;
-	}
-
-	public void setId(int KuntaID) {
-		this.KuntaID = KuntaID;
-	}
-
-	public String getNimi() {
-		return Nimi;
-	}
-
-	public void setNimi(String Nimi) {
-		this.Nimi = Nimi;
-	}
-
-	public int getNum() {
-		return Num;
-	}
-
-	public void setNum(int Num) {
-		this.Num = Num;
-	}
-
-}

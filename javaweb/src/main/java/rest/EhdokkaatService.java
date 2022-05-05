@@ -114,7 +114,7 @@ public class EhdokkaatService {
 		String option;
 
 		String html =
-				"<form action='' method='post' >\r\n" + 
+				"<form action='./AddEhdokasProcess' method='get' >\r\n" + 
 
 				"	<input type='text' name='nimi' required>\r\n" + 
 				"	<label for=\"nimi\">Ehdokkaan koko nimi</label><br>\r\n" + 
@@ -152,5 +152,29 @@ public class EhdokkaatService {
 				+ "	<input type='submit' value='Lisää Ehdokas' ></form>";
 
 		return html;
+	}
+	
+	@GET
+	@Path("/AddEhdokasProcess")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Ehdokas AddEhdokasProcess(@QueryParam("nimi") String name, @QueryParam("kunta") String Kid, @QueryParam("puolue") String Pid,@QueryParam("kuvaus") String kuvaus,@QueryParam("slogan") String slogan) {
+		int KuntaId=Integer.valueOf(Kid);
+		int PuolueId=Integer.valueOf(Pid);
+		Ehdokas e = new Ehdokas();
+		e.setId(0);
+		e.setKunta(KuntaId);
+		e.setKuvaus(kuvaus);
+		e.setNimi(name);
+		e.setPuolue(PuolueId);
+		e.setSlogan(slogan);
+		e.setKuva("nullero");
+		EntityManager em=emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(e);//The actual insertion line
+		em.getTransaction().commit();
+		
+		return e;
+		
 	}
 }
