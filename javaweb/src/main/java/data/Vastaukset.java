@@ -1,14 +1,40 @@
 
 package data;
 
-public class Vastaukset {
-	private int id;
-	private int ehdokasId;
-	private int kysymysId;
-	private int vastasi;
-	private String perustelu;
-	private float average;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Vastaukset {
+	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "VastausID")
+	private int id;
+	
+	@Column(name = "KysymysID")
+	private int kysymysId;
+	@Id
+	@Column(name = "EhdokasID")
+	private int ehdokasId;
+	
+	@Column(name = "Vastasi")
+	private int vastasi;
+	
+	@Column(name = "Perustelu")
+	private String perustelu;
+
+public Vastaukset(int id, int ehdokasId, int kysymysId, int vastasi, String perustelu) {
+	super();
+	this.id = id;
+	this.ehdokasId = ehdokasId;
+	this.kysymysId = kysymysId;
+	this.vastasi = vastasi;
+	this.perustelu = perustelu;
+//	this.average = average;
+}
 	
 	public Vastaukset() {
 		//todo
@@ -55,12 +81,11 @@ public class Vastaukset {
 		this.perustelu = perustelu;
 	}
 	
-	public float getAverage() {
-		return average;
-	}
-	
-	public void setAverage(float average) {
-		this.average = average;
-	}
-	
-}
+//	public float getAverage() {
+//		return average;
+//	}
+//	
+//	public void setAverage(float average) {
+//		this.average = average;
+//	}
+}	

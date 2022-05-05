@@ -1,5 +1,6 @@
 package data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,23 +10,34 @@ import javax.persistence.Id;
 public class Ehdokas {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int EhdokasID;
-	private String Nimi;
-	private int KuntaID;
-	private String Slogan;
-	private int PuolueID;
-	private String Kuvaus;
+	@Column(name = "EhdokasID")
+	private int id;
+	
+	@Column(name = "Nimi")
+	private String nimi;
+	
+	@Column(name = "KuntaID")
+	private int kunta;
+	
+	@Column(name = "Slogan")
+	private String slogan;
+	
+	@Column(name = "PuolueID")
+	private int puolue;
+	
+	@Column(name = "Kuvaus")
+	private String kuvaus;
 //	private String kuntaS;
 //	private String puolueS;
 
-	public Ehdokas(int id, String nimi, int kunta, String slogan, int puolue, String kuvaus) {
+	public Ehdokas(int id, String nimi, int kuntaId, String slogan, int puolue, String kuvaus) {
 		super();
-		this.EhdokasID = id;
-		this.Nimi = nimi;
-		this.KuntaID = kunta;
-		this.Slogan = slogan;
-		this.PuolueID = puolue;
-		this.Kuvaus = kuvaus;
+		this.id = id;
+		this.nimi = nimi;
+		this.kunta = kuntaId;
+		this.slogan = slogan;
+		this.puolue = puolue;
+		this.kuvaus = kuvaus;
 	}
 	
 	public Ehdokas() {
@@ -33,35 +45,35 @@ public class Ehdokas {
 	}
 	
 	public String getKuvaus() {
-		return Kuvaus;
+		return kuvaus;
 	}
 	
 	public void setKuvaus(String kuvaus) {
-		this.Kuvaus = kuvaus;
+		this.kuvaus = kuvaus;
 	}
 	
 	public int getId() {
-		return EhdokasID;
+		return id;
 	}
 	
 	public void setId(int id) {
-		this.EhdokasID = id;
+		this.id = id;
 	}
 	
 	public String getNimi() {
-		return Nimi;
+		return nimi;
 	}
 	
 	public void setNimi(String nimi) {
-		this.Nimi = nimi;
+		this.nimi = nimi;
 	}
 	
 	public int getKunta() {
-		return KuntaID;
+		return kunta;
 	}
 	
 	public void setKunta(int kunta) {
-		this.KuntaID = kunta;
+		this.kunta = kunta;
 	}
 	
 //	public String getKuntaS() {
@@ -73,19 +85,19 @@ public class Ehdokas {
 //	}
 	
 	public String getSlogan() {
-		return Slogan;
+		return slogan;
 	}
 	
 	public void setSlogan(String slogan) {
-		this.Slogan = slogan;
+		this.slogan = slogan;
 	}
 	
 	public int getPuolue() {
-		return PuolueID;
+		return puolue;
 	}
 	
 	public void setPuolue(int puolue) {
-		this.PuolueID = puolue;
+		this.puolue = puolue;
 	}
 	
 //	public String getPuolueS() {
