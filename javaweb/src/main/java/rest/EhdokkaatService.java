@@ -35,6 +35,7 @@ public class EhdokkaatService {
 		System.out.println(ehdokkaat.get(0).getId());
 		return ehdokkaat;
 	}
+
 	
 	@GET
 	@Path("/readEhdokas")
@@ -104,14 +105,17 @@ public class EhdokkaatService {
 		return ehdokas;
 	}
 	
+
 	@GET
 	@Path("/AddEhdokas")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String AddEhdokas() {
 		String option;
+
 		String html =
 				"<form action='' method='post' >\r\n" + 
+
 				"	<input type='text' name='nimi' required>\r\n" + 
 				"	<label for=\"nimi\">Ehdokkaan koko nimi</label><br>\r\n" + 
 				"	\r\n" + 
@@ -135,17 +139,18 @@ public class EhdokkaatService {
 			option="<option value='"+puolue.getPuolueID()+"'>"+puolue.getLyhenne()+ "</option>";
 			html=html+option;
 		}
-		
+
 		html=html+"</Select> <label for=\"puolue\">Puolue</label> <br>	<Select name='kunta' id='kunta'>";
 	
 		for(Kunta kunta:kunnat) {
 			option="<option value='"+kunta.getId()+"'>"+kunta.getNimi()+ "</option>";
 			html=html+option;
 		}
+
 		
 		html=html+"</Select> <label for=\"kunta\">Kunta</label><br>"
 				+ "	<input type='submit' value='Lisää Ehdokas' ></form>";
-		
+
 		return html;
 	}
 }

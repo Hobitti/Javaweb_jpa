@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Kunta {
@@ -28,6 +30,7 @@ public class Kunta {
 		this.id = id;
 		this.nimi = nimi;
 		this.num = num;
+
 	}
 	
 	public Kunta() {
@@ -35,6 +38,7 @@ public class Kunta {
 	}
 
 	public int getId() {
+
 		return id;
 	}
 
@@ -56,6 +60,31 @@ public class Kunta {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+}
+
+		return KuntaID;
+	}
+
+	public void setId(int KuntaID) {
+		this.KuntaID = KuntaID;
+	}
+
+	public String getNimi() {
+		return Nimi;
+	}
+
+	public void setNimi(String Nimi) {
+		this.Nimi = Nimi;
+	}
+
+	public int getNum() {
+		return Num;
+	}
+
+	public void setNum(int Num) {
+		this.Num = Num;
 	}
 
 }
