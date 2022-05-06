@@ -1,23 +1,47 @@
 package data;
 
-public class Ehdokas {
-	private int id;
-	private String nimi;
-	private int kunta;
-	private String slogan;
-	private int puolue;
-	private String kuvaus;
-	private String kuntaS;
-	private String puolueS;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	public Ehdokas(int id, String nimi, int kunta, String slogan, int puolue, String kuvaus) {
+@Entity
+public class Ehdokas {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "EhdokasID")
+	private int id;
+	
+	@Column(name = "Nimi")
+	private String nimi;
+	
+	@Column(name = "KuntaID")
+	private int kunta;
+	
+	@Column(name = "Slogan")
+	private String slogan;
+	
+	@Column(name = "PuolueID")
+	private int puolue;
+	
+	@Column(name = "Kuvaus")
+	private String kuvaus;
+	
+	@Column(name = "Img")
+	private String kuva;
+//	private String kuntaS;
+//	private String puolueS;
+
+	public Ehdokas(int id, String nimi, int kuntaId, String slogan, int puolue, String kuvaus, String kuva) {
 		super();
 		this.id = id;
 		this.nimi = nimi;
-		this.kunta = kunta;
+		this.kunta = kuntaId;
 		this.slogan = slogan;
 		this.puolue = puolue;
 		this.kuvaus = kuvaus;
+		this.kuva= kuva;
 	}
 	
 	public Ehdokas() {
@@ -56,13 +80,13 @@ public class Ehdokas {
 		this.kunta = kunta;
 	}
 	
-	public String getKuntaS() {
-		return kuntaS;
-	}
-	
-	public void setKuntaS(String kuntaS) {
-		this.kuntaS = kuntaS;
-	}
+//	public String getKuntaS() {
+//		return kuntaS;
+//	}
+//	
+//	public void setKuntaS(String kuntaS) {
+//		this.kuntaS = kuntaS;
+//	}
 	
 	public String getSlogan() {
 		return slogan;
@@ -79,13 +103,21 @@ public class Ehdokas {
 	public void setPuolue(int puolue) {
 		this.puolue = puolue;
 	}
-	
-	public String getPuolueS() {
-		return puolueS;
+
+	public String getKuva() {
+		return kuva;
+	}
+
+	public void setKuva(String kuva) {
+		this.kuva = kuva;
 	}
 	
-	public void setPuolueS(String puolueS) {
-		this.puolueS = puolueS;
-	}
+//	public String getPuolueS() {
+//		return puolueS;
+//	}
+//	
+//	public void setPuolueS(String puolueS) {
+//		this.puolueS = puolueS;
+//	}
 
 }
