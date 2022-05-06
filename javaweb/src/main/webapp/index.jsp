@@ -18,18 +18,15 @@
         <td colspan="2" style="font-weight:bold;">Palvelut</td>        
       </tr>
             <tr>
-        <td><a href='/adminMenu.jsp'>Admin Menu</a></td>  
+        <td><a href='/adminMenu.jsp'>Admin Login</a></td>  
       </tr>
             <tr>
-        <td><a href='/annaVastaus'>Ehdokas Vastaus</a></td>  
+        <td><a href='/ehdokasMenu.jsp'>Ehdokas Login</a></td>  
       </tr>
-
       <tr>
         <td><a href='/kysymykset'>Kysymykset</a></td>  
       </tr>
-      <tr>
-        <td><a href='/vastaukset'>Vastaukset</a></td>
-      </tr>
+
 
     </table>
     </div">
