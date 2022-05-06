@@ -34,6 +34,7 @@ public class Ehdokas {
 //	private String puolueS;
 
 	public Ehdokas(int id, String nimi, int kuntaId, String slogan, int puolue, String kuvaus, String kuva) {
+	
 		super();
 		this.id = id;
 		this.nimi = nimi;
@@ -103,6 +104,7 @@ public class Ehdokas {
 	public void setPuolue(int puolue) {
 		this.puolue = puolue;
 	}
+
 
 	public String getKuva() {
 		return kuva;

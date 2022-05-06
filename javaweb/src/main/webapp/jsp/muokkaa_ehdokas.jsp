@@ -27,6 +27,8 @@ $(document).ready(function () {
 	
     $("form").submit(function (event) {
 
+
+
         var formData = {
             id: $("input[name='id']").val(),
             nimi: $("input[name='nimi']").val(),
@@ -35,9 +37,7 @@ $(document).ready(function () {
             kunta: $("select[name='kunta']").val(),
             puolue: $("select[name='puolue']").val(),
         };
-        
         var formDataJson = JSON.stringify(formData);
-
         $.ajax({
             type: "PUT",
             url: "/rest/ehdokasService/muokkaaEhdokas",
@@ -62,7 +62,6 @@ $(document).ready(function () {
             	document.getElementById("result").innerHTML = "Muokkaus onnistui!";
             }
         });
-
         event.preventDefault();
     });
 });

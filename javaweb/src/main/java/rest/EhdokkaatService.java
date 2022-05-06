@@ -1,9 +1,17 @@
 package rest;
+
+import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -13,12 +21,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import dao.Dao;
 import data.Ehdokas;
 import data.Kunta;
 import data.Puolue;
+import data.Vastaukset;
+
 
 @Path("/ehdokasService")
 public class EhdokkaatService {
@@ -35,7 +46,6 @@ public class EhdokkaatService {
 		System.out.println(ehdokkaat.get(0).getId());
 		return ehdokkaat;
 	}
-
 	
 	@GET
 	@Path("/readEhdokas")
@@ -104,7 +114,37 @@ public class EhdokkaatService {
 	    em.getTransaction().commit();
 		return ehdokas;
 	}
-	
+
+	@GET
+	@Path("/deleteEhdokas/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void deleteEhdokas(@PathParam("id") int id, 
+			@Context HttpServletRequest request,
+			@Context HttpServletResponse response
+			) {
+		EntityManager em2=emf.createEntityManager();
+		em2.getTransaction().begin();
+		Vastaukset v = em2.find(Vastaukset.class, id);
+		if (v!=null) {
+			em2.remove(v);
+		}
+		em2.getTransaction().commit();
+		EntityManager em=emf.createEntityManager();
+		em.getTransaction().begin();
+		Ehdokas f = em.find(Ehdokas.class, id);
+		if (f!=null) {
+			em.remove(f);
+		}
+		em.getTransaction().commit();
+		
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/ehdokkaat.jsp");
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	@GET
 	@Path("/AddEhdokas")
@@ -175,6 +215,5 @@ public class EhdokkaatService {
 		em.getTransaction().commit();
 		
 		return e;
-		
 	}
 }

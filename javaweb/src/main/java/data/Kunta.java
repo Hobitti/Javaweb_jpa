@@ -30,7 +30,6 @@ public class Kunta {
 		this.id = id;
 		this.nimi = nimi;
 		this.num = num;
-
 	}
 	
 	public Kunta() {
@@ -62,4 +61,6 @@ public class Kunta {
 		this.num = num;
 	}
 
+
 }
+

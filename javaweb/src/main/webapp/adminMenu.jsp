@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Vaalikone</title>
+    <title>Admin Menu</title>
 
      <style><%@include file="/WEB-INF/css/style.css"%></style>
   </head>
@@ -11,20 +11,14 @@
   <div class="grid-container">
   <div class="grid-left"></div>
   <div class="grid-item">
-    <h1>Vaalikone</h1>
+    <h1>Admin Palvelut</h1>
 
     <table style=" display: flex; justify-content: center;">
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Palvelut</td>        
+            <tr>
+        <td><a href='/jsp/ehdokkaat.jsp'>Ehdokkaat</a></td>  
       </tr>
             <tr>
-        <td><a href='/adminMenu.jsp'>Admin Login</a></td>  
-      </tr>
-            <tr>
-        <td><a href='/ehdokasMenu.jsp'>Ehdokas Login</a></td>  
-      </tr>
-      <tr>
-        <td><a href='/kysymykset'>Kysymykset</a></td>  
+        <td><a href='/vastaukset'>Vastaukset</a></td>
       </tr>
 
 
