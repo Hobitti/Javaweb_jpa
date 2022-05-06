@@ -19,6 +19,7 @@ function readEhdokkaat(){
 	xmlhttp.open("GET", "/rest/ehdokasService/readEhdokkaat", true);
 	xmlhttp.send();	
 }
+
 function printEhdokkaat(list){
 	var s = "";
 	for (i in list) {

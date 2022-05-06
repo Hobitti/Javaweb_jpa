@@ -27,10 +27,14 @@ public class Ehdokas {
 	
 	@Column(name = "Kuvaus")
 	private String kuvaus;
+	
+	@Column(name = "Img")
+	private String kuva;
 //	private String kuntaS;
 //	private String puolueS;
 
-	public Ehdokas(int id, String nimi, int kuntaId, String slogan, int puolue, String kuvaus) {
+	public Ehdokas(int id, String nimi, int kuntaId, String slogan, int puolue, String kuvaus, String kuva) {
+	
 		super();
 		this.id = id;
 		this.nimi = nimi;
@@ -38,6 +42,7 @@ public class Ehdokas {
 		this.slogan = slogan;
 		this.puolue = puolue;
 		this.kuvaus = kuvaus;
+		this.kuva= kuva;
 	}
 	
 	public Ehdokas() {
@@ -98,6 +103,15 @@ public class Ehdokas {
 	
 	public void setPuolue(int puolue) {
 		this.puolue = puolue;
+	}
+
+
+	public String getKuva() {
+		return kuva;
+	}
+
+	public void setKuva(String kuva) {
+		this.kuva = kuva;
 	}
 	
 //	public String getPuolueS() {

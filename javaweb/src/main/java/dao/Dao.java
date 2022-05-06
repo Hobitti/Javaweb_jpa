@@ -99,10 +99,10 @@ public class Dao {
 					ehdokas.setId(RS.getInt("EhdokasID"));
 					ehdokas.setNimi(RS.getString("Nimi"));
 					ehdokas.setKunta(RS.getInt("KuntaID"));
-//					ehdokas.setKuntaS(RS.getString("KunnanNimi"));
+					//ehdokas.setKuntaS(RS.getString("KunnanNimi"));
 					ehdokas.setSlogan(RS.getString("Slogan"));
 					ehdokas.setPuolue(RS.getInt("PuolueID"));
-//					ehdokas.setPuolueS(RS.getString("PuolueenNimi"));
+					//ehdokas.setPuolueS(RS.getString("PuolueenNimi"));
 					ehdokas.setKuvaus(RS.getString("Kuvaus"));
 				}
 				return ehdokas;

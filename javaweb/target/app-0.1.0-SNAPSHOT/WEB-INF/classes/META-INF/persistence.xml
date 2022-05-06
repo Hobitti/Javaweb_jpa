@@ -34,4 +34,5 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	</properties>
 	
 	</persistence-unit>
+
 </persistence>
