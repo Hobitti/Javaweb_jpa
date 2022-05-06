@@ -13,7 +13,7 @@ public class Vastaukset {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "VastausID")
 	private int id;
-	
+	 
 	@Column(name = "KysymysID")
 	private int kysymysId;
 	@Id
