@@ -18,7 +18,6 @@ function readEhdokas(id){
 	xmlhttp.open("GET", "/rest/ehdokasService/readEhdokas?id=" + id, true);
 	xmlhttp.send();	
 }
-
 $(document).ready(function () {
 	let searchParams = new URLSearchParams(window.location.search)
 	searchParams.has('id') 
@@ -26,9 +25,6 @@ $(document).ready(function () {
 	readEhdokas(id);
 	
     $("form").submit(function (event) {
-
-
-
         var formData = {
             id: $("input[name='id']").val(),
             nimi: $("input[name='nimi']").val(),
@@ -37,6 +33,7 @@ $(document).ready(function () {
             kunta: $("select[name='kunta']").val(),
             puolue: $("select[name='puolue']").val(),
         };
+        
         var formDataJson = JSON.stringify(formData);
         $.ajax({
             type: "PUT",

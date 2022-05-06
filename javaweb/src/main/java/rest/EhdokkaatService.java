@@ -6,16 +6,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -30,20 +27,20 @@ import data.Kunta;
 import data.Puolue;
 import data.Vastaukset;
 
-
 @Path("/ehdokasService")
 public class EhdokkaatService {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpavaalikone");
 
-	@GET
+	@GET 
 	@Path("/readEhdokkaat")
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public List<Ehdokas> readEhdokkaat() {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		List<Ehdokas> ehdokkaat = em.createQuery("SELECT a FROM Ehdokas a").getResultList();
 		em.getTransaction().commit();
-		System.out.println(ehdokkaat.get(0).getId());
+		System.out.println(ehdokkaat.get(0).getNimi());
 		return ehdokkaat;
 	}
 	
@@ -92,6 +89,42 @@ public class EhdokkaatService {
 		html += "</select>";
 		
 		html += "<input type='submit'>";
+
+		return html;
+	}
+
+	@GET
+	@Path("/AddEhdokas")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String AddEhdokas() {
+		String option;
+		String html = "<form action='' method='post' >\r\n" + "	<input type='text' name='nimi' required>\r\n"
+				+ "	<label for=\"nimi\">Ehdokkaan koko nimi</label><br>\r\n" + "	\r\n"
+				+ "	<input type='text' name='kuvaus' required>\r\n" + "	<label for=\"kuvaus\">Kuvaus</label><br>\r\n"
+				+ "	\r\n" + "	<input type='text' name='slogan' required>\r\n"
+				+ "	<label for=\"slogan\">Slogan</label><br>\r\n" + "	\r\n" + "	<Select name='puolue' id='puolue'>";
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		List<Puolue> puolueet = em.createQuery("SELECT a FROM Puolue a").getResultList();
+		em.getTransaction().commit();
+		EntityManager em2 = emf.createEntityManager();
+		em2.getTransaction().begin();
+		List<Kunta> kunnat = em2.createQuery("SELECT a FROM Kunta a").getResultList();
+		em2.getTransaction().commit();
+
+		for (Puolue puolue : puolueet) {
+			option = "<option value='" + puolue.getPuolueID() + "'>" + puolue.getLyhenne() + "</option>";
+			html = html + option;
+		}
+		html = html + "</Select> <label for=\"puolue\">Puolue</label> <br>	<Select name='kunta' id='kunta'>";
+
+		for (Kunta kunta : kunnat) {
+			option = "<option value='" + kunta.getId() + "'>" + kunta.getNimi() + "</option>";
+			html = html + option;
+		}
+		html = html + "</Select> <label for=\"kunta\">Kunta</label><br>"
+				+ "	<input type='submit' value='Lisää Ehdokas' ></form>";
 
 		return html;
 	}
@@ -145,75 +178,5 @@ public class EhdokkaatService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	@GET
-	@Path("/AddEhdokas")
-	@Produces(MediaType.TEXT_HTML)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public String AddEhdokas() {
-		String option;
-
-		String html =
-				"<form action='./AddEhdokasProcess' method='get' >\r\n" + 
-
-				"	<input type='text' name='nimi' required>\r\n" + 
-				"	<label for=\"nimi\">Ehdokkaan koko nimi</label><br>\r\n" + 
-				"	\r\n" + 
-				"	<input type='text' name='kuvaus' required>\r\n" + 
-				"	<label for=\"kuvaus\">Kuvaus</label><br>\r\n" + 
-				"	\r\n" + 
-				"	<input type='text' name='slogan' required>\r\n" + 
-				"	<label for=\"slogan\">Slogan</label><br>\r\n" + 
-				"	\r\n" + 
-				"	<Select name='puolue' id='puolue'>";		
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		List<Puolue> puolueet = em.createQuery("SELECT a FROM Puolue a").getResultList();
-		em.getTransaction().commit();
-		EntityManager em2 = emf.createEntityManager();
-		em2.getTransaction().begin();
-		List<Kunta> kunnat = em2.createQuery("SELECT a FROM Kunta a").getResultList();
-		em2.getTransaction().commit();
-		
-		for(Puolue puolue:puolueet) {
-			option="<option value='"+puolue.getPuolueID()+"'>"+puolue.getLyhenne()+ "</option>";
-			html=html+option;
-		}
-
-		html=html+"</Select> <label for=\"puolue\">Puolue</label> <br>	<Select name='kunta' id='kunta'>";
-	
-		for(Kunta kunta:kunnat) {
-			option="<option value='"+kunta.getId()+"'>"+kunta.getNimi()+ "</option>";
-			html=html+option;
-		}
-
-		
-		html=html+"</Select> <label for=\"kunta\">Kunta</label><br>"
-				+ "	<input type='submit' value='Lisää Ehdokas' ></form>";
-
-		return html;
-	}
-	
-	@GET
-	@Path("/AddEhdokasProcess")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Ehdokas AddEhdokasProcess(@QueryParam("nimi") String name, @QueryParam("kunta") String Kid, @QueryParam("puolue") String Pid,@QueryParam("kuvaus") String kuvaus,@QueryParam("slogan") String slogan) {
-		int KuntaId=Integer.valueOf(Kid);
-		int PuolueId=Integer.valueOf(Pid);
-		Ehdokas e = new Ehdokas();
-		e.setId(0);
-		e.setKunta(KuntaId);
-		e.setKuvaus(kuvaus);
-		e.setNimi(name);
-		e.setPuolue(PuolueId);
-		e.setSlogan(slogan);
-		e.setKuva("nullero");
-		EntityManager em=emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(e);//The actual insertion line
-		em.getTransaction().commit();
-		
-		return e;
 	}
 }
